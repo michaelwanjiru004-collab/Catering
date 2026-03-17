@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PulseFX | Forex Trading Platform</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="logo">PulseFX</div>
+      <nav>
+        <a href="#markets">Markets</a>
+        <a href="#tools">Tools</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="btn btn-outline">Log In</button>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Trade smarter, faster</p>
+        <h1>Your modern forex trading command center</h1>
+        <p>
+          Execute trades with low spreads, monitor live currency movement, and
+          practice risk-managed strategies with pro-level tools.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary">Open Live Account</button>
+          <button class="btn btn-ghost">Try Demo</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Account Snapshot</h3>
+        <ul>
+          <li><span>Balance</span><strong>$24,880.20</strong></li>
+          <li><span>Open Trades</span><strong>7</strong></li>
+          <li><span>Today's P/L</span><strong class="profit">+$632.70</strong></li>
+          <li><span>Margin Level</span><strong>465%</strong></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="markets" class="panel">
+      <h2>Live Market Watch</h2>
+      <div class="ticker-grid" id="tickerGrid"></div>
+    </section>
+
+    <section id="tools" class="panel split">
+      <div>
+        <h2>Position Size Calculator</h2>
+        <p>
+          Calculate lot size based on account balance, risk percentage, and stop
+          loss to manage exposure.
+        </p>
+        <form id="calcForm" class="calculator">
+          <label>
+            Account Balance ($)
+            <input type="number" id="balance" value="10000" min="100" required />
+          </label>
+          <label>
+            Risk (%)
+            <input type="number" id="risk" value="2" step="0.1" min="0.1" max="10" required />
+          </label>
+          <label>
+            Stop Loss (pips)
+            <input type="number" id="stopLoss" value="25" min="1" required />
+          </label>
+          <label>
+            Pip Value ($)
+            <input type="number" id="pipValue" value="10" step="0.1" min="0.1" required />
+          </label>
+          <button class="btn btn-primary" type="submit">Calculate Lot Size</button>
+        </form>
+        <p id="calcResult" class="result"></p>
+      </div>
+      <div class="card dark">
+        <h3>Why Traders Choose PulseFX</h3>
+        <ul class="feature-list">
+          <li>Lightning-fast execution under 30ms</li>
+          <li>Advanced charting with 90+ indicators</li>
+          <li>Economic calendar and market alerts</li>
+          <li>Built-in copy trading and strategy vault</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="education" class="panel">
+      <h2>Learn & Improve</h2>
+      <div class="course-grid">
+        <article>
+          <h3>Forex Basics</h3>
+          <p>Understand pips, lots, leverage, and market sessions.</p>
+        </article>
+        <article>
+          <h3>Technical Analysis</h3>
+          <p>Master trend lines, price action, and key indicators.</p>
+        </article>
+        <article>
+          <h3>Risk Psychology</h3>
+          <p>Build discipline and avoid common emotional mistakes.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer id="contact" class="footer">
+      <div>
+        <h2>Start trading with confidence</h2>
+        <p>Support available 24/5 · support@pulsefx.com</p>
+      </div>
+      <form class="newsletter">
+        <label for="email">Get market updates</label>
+        <div>
+          <input id="email" type="email" placeholder="Email address" required />
+          <button class="btn btn-primary">Subscribe</button>
+        </div>
+      </form>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
