@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MainaFX | Trade Forex Smarter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="#">Maina<span>FX</span></a>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#markets">Markets</a></li>
+            <li><a href="#platform">Platform</a></li>
+            <li><a href="#tools">Tools</a></li>
+            <li><a href="#start">Get Started</a></li>
+          </ul>
+        </nav>
+        <button class="btn btn-outline">Log in</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Trusted forex technology</p>
+            <h1>Trade major currency pairs with speed and confidence.</h1>
+            <p class="hero-copy">
+              Access tight spreads, execution analytics, and real-time insights on a platform built for modern forex traders.
+            </p>
+            <div class="hero-actions" id="start">
+              <button class="btn btn-primary">Open Live Account</button>
+              <button class="btn btn-secondary">Try Demo</button>
+            </div>
+            <div class="hero-stats">
+              <article>
+                <h3>$12B+</h3>
+                <p>Monthly trade volume</p>
+              </article>
+              <article>
+                <h3>0.2 pips</h3>
+                <p>From spread on EUR/USD</p>
+              </article>
+              <article>
+                <h3>24/5</h3>
+                <p>Dedicated support team</p>
+              </article>
+            </div>
+          </div>
+
+          <aside class="card quote-card" id="markets">
+            <h2>Live market watch</h2>
+            <p class="small">Indicative prices refreshed every 3s.</p>
+            <ul id="quote-list"></ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="container features" id="platform">
+        <article class="card">
+          <h3>One-click execution</h3>
+          <p>Deploy trades with sub-second routing and integrated slippage protection.</p>
+        </article>
+        <article class="card">
+          <h3>Smart alerts</h3>
+          <p>Track price zones, volatility spikes, and custom indicator events automatically.</p>
+        </article>
+        <article class="card">
+          <h3>Multi-device sync</h3>
+          <p>Switch from desktop to mobile without losing layouts, watchlists, or risk settings.</p>
+        </article>
+      </section>
+
+      <section class="container tools" id="tools">
+        <div class="card tool-card">
+          <h2>Position size calculator</h2>
+          <form id="position-form">
+            <label>
+              Account Balance (USD)
+              <input type="number" id="balance" value="10000" min="1" required />
+            </label>
+            <label>
+              Risk per Trade (%)
+              <input type="number" id="risk" value="1" min="0.1" max="10" step="0.1" required />
+            </label>
+            <label>
+              Stop Loss (pips)
+              <input type="number" id="stopLoss" value="25" min="1" required />
+            </label>
+            <button class="btn btn-primary" type="submit">Calculate</button>
+          </form>
+          <p id="position-result" class="result">Lot size: 0.40 standard lots</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-wrap">
+        <p>© <span id="year"></span> MainaFX. Forex trading involves risk.</p>
+        <a href="#" aria-label="Back to top">Back to top ↑</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
