@@ -1,50 +1,46 @@
-const quoteList = document.getElementById("quote-list");
-const pairs = [
-  { symbol: "EUR/USD", price: 1.0874 },
-  { symbol: "GBP/USD", price: 1.2721 },
-  { symbol: "USD/JPY", price: 150.42 },
-  { symbol: "AUD/USD", price: 0.6635 },
-  { symbol: "USD/CAD", price: 1.3483 }
-];
-
-function renderQuotes() {
-  quoteList.innerHTML = "";
-
-  pairs.forEach((pair) => {
-    const movement = (Math.random() * 0.001 - 0.0005).toFixed(4);
-    pair.price = Number((pair.price + Number(movement)).toFixed(4));
-
-    const li = document.createElement("li");
-    const movementClass = Number(movement) >= 0 ? "up" : "down";
-    const sign = Number(movement) >= 0 ? "+" : "";
-
-    li.innerHTML = `
-      <span class="pair">${pair.symbol}</span>
-      <span class="price ${movementClass}">${pair.price.toFixed(4)} (${sign}${movement})</span>
-    `;
-
-    quoteList.appendChild(li);
-  });
-}
-
-renderQuotes();
-setInterval(renderQuotes, 3000);
-
 document.getElementById("year").textContent = new Date().getFullYear();
 
-const positionForm = document.getElementById("position-form");
-const positionResult = document.getElementById("position-result");
+const bookingForm = document.getElementById("booking-form");
+const quoteResult = document.getElementById("quote-result");
 
-positionForm.addEventListener("submit", (event) => {
+const packagePricing = {
+  silver: 1800,
+  gold: 2500,
+  platinum: 3400
+};
+
+const eventMultipliers = {
+  ruracio: 1.1,
+  wedding: 1.2,
+  graduation: 1,
+  birthday: 0.95,
+  corporate: 1.05,
+  other: 1
+};
+
+function formatCurrency(value) {
+  return new Intl.NumberFormat("en-KE", {
+    style: "currency",
+    currency: "KES",
+    maximumFractionDigits: 0
+  }).format(value);
+}
+
+bookingForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const balance = Number(document.getElementById("balance").value);
-  const riskPercent = Number(document.getElementById("risk").value);
-  const stopLoss = Number(document.getElementById("stopLoss").value);
+  const name = document.getElementById("name").value.trim();
+  const eventType = document.getElementById("eventType").value;
+  const guests = Number(document.getElementById("guests").value);
+  const packageType = document.getElementById("packageType").value;
+  const eventDate = document.getElementById("eventDate").value;
 
-  const amountAtRisk = balance * (riskPercent / 100);
-  const pipValuePerStandardLot = 10;
-  const lotSize = amountAtRisk / (stopLoss * pipValuePerStandardLot);
+  const basePerGuest = packagePricing[packageType] ?? packagePricing.silver;
+  const eventFactor = eventMultipliers[eventType] ?? 1;
+  const estimatedTotal = Math.round(guests * basePerGuest * eventFactor);
 
-  positionResult.textContent = `Lot size: ${lotSize.toFixed(2)} standard lots (risking $${amountAtRisk.toFixed(2)})`;
+  quoteResult.classList.add("visible");
+  quoteResult.textContent = `Thank you, ${name}! Your ${eventType || "event"} booking for ${guests} guests on ${eventDate} has been received. Estimated catering cost: ${formatCurrency(estimatedTotal)}. Our team will contact you within 24 hours to confirm your menu and venue details.`;
+
+  bookingForm.reset();
 });
